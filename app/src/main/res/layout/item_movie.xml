@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.text.Html"/>
+
+        <variable
+            name="viewModel"
+            type="com.example.taskproject.viewmodel.MovieItemViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:onClick="@{viewModel::OnItemClicked}"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/img_item_movie_poster"
+            android:layout_width="80dp"
+            android:layout_height="100dp"
+            bind:url="@{viewModel.imageURL}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_item_movie_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/item_left_margin"
+            android:maxLines="1"
+            android:text="@{Html.fromHtml(viewModel.title)}"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/img_item_movie_poster" />
+
+        <RatingBar
+            android:id="@+id/ratingbar_item_movie_rating"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            bind:rating="@{viewModel.rating}"
+            android:layout_marginStart="@dimen/item_left_margin"
+            android:layout_marginTop="@dimen/item_top_margin"
+            app:rating="@{viewModel.rating.get()}"
+            app:layout_constraintStart_toEndOf="@id/img_item_movie_poster"
+            app:layout_constraintTop_toBottomOf="@id/text_item_movie_title" />
+
+        <TextView
+            android:id="@+id/text_view_item_movie_open_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/item_left_margin"
+            android:layout_marginTop="@dimen/item_top_margin"
+            android:text="@{viewModel.openDay}"
+            android:maxLines="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/img_item_movie_poster"
+            app:layout_constraintTop_toBottomOf="@id/ratingbar_item_movie_rating" />
+
+        <TextView
+            android:id="@+id/text_view_item_movie_director"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/item_left_margin"
+            android:layout_marginTop="@dimen/item_top_margin"
+            android:text="@{viewModel.director}"
+            android:maxLines="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/img_item_movie_poster"
+            app:layout_constraintTop_toBottomOf="@id/text_view_item_movie_open_date" />
+
+        <TextView
+            android:id="@+id/text_view_item_movie_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.actors}"
+            android:layout_marginStart="@dimen/item_left_margin"
+            android:layout_marginTop="@dimen/item_top_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/img_item_movie_poster"
+            app:layout_constraintTop_toBottomOf="@id/text_view_item_movie_director" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

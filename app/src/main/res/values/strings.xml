@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">부스트캠프 사전과제</string>
+
+    <string name="btn_search">검색</string>
+    <string name="title">부스트캠프 사전과제</string>
+
+    <string name="empty_input_err">검색어를 입력해주세요 !</string>
+
+    <string name="search_start">검색중입니다</string>
+    <string name="search_fail">검색 결과가 없습니다</string>
+    <string name="search_success">검색 결과 목록입니다</string>
+
+    <string name="naver_search_api_id">MW9mJ10cD1YFY3ZgAUdS</string>
+    <string name="naver_search_api_pw">ZYycnw9s4p</string>
+
+</resources>
