@@ -1,6 +1,4 @@
-package com.example.taskproject.repo;
-
-import com.example.taskproject.model.Movie;
+package com.example.taskproject.data;
 
 import java.util.List;
 

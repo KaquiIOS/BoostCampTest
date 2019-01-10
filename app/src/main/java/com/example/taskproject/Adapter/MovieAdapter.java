@@ -1,4 +1,4 @@
-package com.example.taskproject.view;
+package com.example.taskproject.Adapter;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import com.example.taskproject.R;
 import com.example.taskproject.contract.MainViewContract;
 import com.example.taskproject.databinding.ItemMovieBinding;
-import com.example.taskproject.model.Movie;
+import com.example.taskproject.data.Movie;
 import com.example.taskproject.viewmodel.MovieItemViewModel;
 
 import java.util.ArrayList;

@@ -5,28 +5,33 @@ import android.databinding.ObservableField;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 
 import com.example.taskproject.R;
 import com.example.taskproject.contract.MainViewContract;
-import com.example.taskproject.model.Movie;
-import com.example.taskproject.repo.MovieLoader;
-import com.example.taskproject.repo.MovieLoaderCallback;
+import com.example.taskproject.data.Movie;
+import com.example.taskproject.data.MovieLoader;
+import com.example.taskproject.data.MovieLoaderCallback;
 import com.example.taskproject.view.MainActivity;
 
 import java.util.List;
 
 public class MainViewModel implements MovieLoaderCallback {
 
+    // RXJava, Databinding 맛보기
     public ObservableField<String> searchWord = new ObservableField<>();
 
+    // 어느 View에 대한 참조인지 전혀 모른다.
+    // View와 ViewModel의 종속을 끊었다고 생각하지만..
     private MainViewContract mainView;
 
+    // 이 부분에서 View와의 종속을 끊어내지 못했다고 생각됨
+    // MainView 에 대한 정보들로 가득차있음..
     private String searchItem;
     private int currentNumber = 1;
     private boolean isScrolled = false;
     private boolean hasMoreItems = true;
-    ConnectivityManager cm;
+
+    private ConnectivityManager cm;
 
     public MainViewModel(MainViewContract mainView) {
         this.mainView = mainView;
@@ -53,7 +58,6 @@ public class MainViewModel implements MovieLoaderCallback {
             return;
         }
 
-
         currentNumber = 1;
         isScrolled = false;
         hasMoreItems = true;
@@ -65,10 +69,14 @@ public class MainViewModel implements MovieLoaderCallback {
         // 검색어를 Loader에 넘겨주기
         searchItem = searchWord.get();
         mainView.setProgressDialogVisibility(View.VISIBLE, String.format("%s 검색을 시작합니다", searchItem));
+
+        // 영화목록 가져오기
         new MovieLoader(this, currentNumber).execute(searchItem);
     }
 
-
+    /*
+    * MovieLoadCallback 함수 정의
+    * */
     @Override
     public void returnSearchList(List<Movie> movieList) {
 

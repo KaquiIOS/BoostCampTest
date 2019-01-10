@@ -1,6 +1,6 @@
 package com.example.taskproject.contract;
 
-import com.example.taskproject.model.Movie;
+import com.example.taskproject.data.Movie;
 
 import java.util.List;
 

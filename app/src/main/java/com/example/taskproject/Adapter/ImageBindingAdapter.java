@@ -1,4 +1,4 @@
-package com.example.taskproject.viewmodel;
+package com.example.taskproject.Adapter;
 
 import android.databinding.BindingAdapter;
 import android.support.v7.widget.RecyclerView;

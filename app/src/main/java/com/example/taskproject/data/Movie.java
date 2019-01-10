@@ -1,6 +1,4 @@
-package com.example.taskproject.model;
-
-import android.text.SpannableString;
+package com.example.taskproject.data;
 
 public class Movie {
 

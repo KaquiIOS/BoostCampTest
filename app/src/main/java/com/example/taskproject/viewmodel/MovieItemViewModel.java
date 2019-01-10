@@ -2,13 +2,10 @@ package com.example.taskproject.viewmodel;
 
 import android.databinding.ObservableDouble;
 import android.databinding.ObservableField;
-import android.databinding.ObservableFloat;
-import android.databinding.ObservableInt;
-import android.text.SpannableString;
 import android.view.View;
 
 import com.example.taskproject.contract.MainViewContract;
-import com.example.taskproject.model.Movie;
+import com.example.taskproject.data.Movie;
 
 public class MovieItemViewModel {
 

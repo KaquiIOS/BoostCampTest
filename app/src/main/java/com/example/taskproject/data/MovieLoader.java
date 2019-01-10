@@ -1,11 +1,6 @@
-package com.example.taskproject.repo;
+package com.example.taskproject.data;
 
 import android.os.AsyncTask;
-import android.text.SpannableString;
-import android.util.Log;
-import android.view.View;
-
-import com.example.taskproject.model.Movie;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -17,7 +12,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class MovieLoader extends AsyncTask<String, String, String>{
@@ -98,17 +92,20 @@ public class MovieLoader extends AsyncTask<String, String, String>{
 
             int len = array.length();
 
+            MovieBuilder movieBuilder = new MovieBuilder();
+
             for(int i = 0; i < len; ++i) {
                 JSONObject obj = array.getJSONObject(i);
-                Movie movie = new Movie(
-                        obj.getString("image"),
-                        obj.getString("link"),
-                        obj.getString("title"),
-                        obj.getString("pubDate"),
-                        obj.getString("director"),
-                        obj.getString("actor"),
-                        obj.getDouble("userRating")
-                );
+                // 생성 부분을 Builder 로 수정
+                Movie movie = movieBuilder
+                        .setImageURL(obj.getString("image"))
+                        .setLink(obj.getString("link"))
+                        .setTitle(obj.getString("title"))
+                        .setPubDate(obj.getString("pubDate"))
+                        .setDirector(obj.getString("director"))
+                        .setActors(obj.getString("actor"))
+                        .setUserRating(obj.getDouble("userRating"))
+                        .build();
 
                 parseResult.add(movie);
             }
